@@ -1,122 +1,38 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import {useState} from 'react' 
+import './App.css' // css 가져오기
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() {   // 컴포넌트
+
+  // 처음에는 HOME이 선택된 상태로 시작
+  const [menu, setMenu] = useState('HOME')
+  //카테고리 목록
+  const menus =['HOME', 'ABOUT ME', 'PROJECT', 'GALLERY','CONTACT']
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div>
+        {/*오른쪽 위 지구 */}
+        <div className='earth'></div>
+        {/* 메뉴 부분 */}
+        <nav className="navbar">
+          {menus.map((item)=>(
+            <button
+              key={item} /* 버튼 구별을 위해 붙이는 고유 식별값 */
+              onClick={()=>setMenu(item)}
+              className={menu === item ? 'active' : ''}
+            >
+              {item}
+            </button>
+          ))}
+        </nav>
+        <div className='content-box'>
+          {menu === 'HOME' && <p>홈페이지 입니다..</p>}
+          {menu === 'ABOUT ME' && <p>나는.. 이런사람입니다..</p>}
+          {menu === 'PROJECT' && <p>제가 한 프로젝트..입니다..</p>}
+          {menu === 'GALLERY' && <p>제가 그린 기린 그림 입니다..</p>}
+          {menu === 'CONTACT' && <p>제..연락처..입니다..</p>}
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </div>
   )
 }
 
-export default App
+export default App // App이라는 함수를 다른 파일에서도 사용할 수 있도록 내보내는 코드

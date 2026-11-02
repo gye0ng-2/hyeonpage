@@ -7,12 +7,12 @@
   height: 136px;
 
   background-image: url('/earth-map.png');
-  background-size: auto 100%;
-  background-repeat: repeat-x;
-  image-rendering: pixelated;
+  background-size: auto 100%; /*이미지의 비율 유지하며 높이 맞춤*/
+  background-repeat: repeat-x; /*이미지를 가로 방향으로 반복*/
+  image-rendering: pixelated; /*픽셀 형태를 유지하게 해주는..?*/
 
-  mask-image: url('/earth-mask.png');
-  mask-size: 100% 100%;
+  mask-image: url('/earth-mask.png'); /*이미지로 보이는 영역을 설정*/
+  mask-size: 100% 100%; /*마스크 이미지 크기*/
 
   animation: spin 20s linear infinite;
 }
@@ -20,9 +20,11 @@
 /* 크기 : width, height = 68 × 배수
          to 숫자 = 128 × 배수 */
 
+        
+/*keyframes는 애니메이션이 어떻게 움직일지 정의*/         
 @keyframes spin {
   from { background-position: 0 0; }
-  to   { background-position: 256px 0; }   /* 지도 가로 128 × 3 */
+  to   { background-position: 256px 0; }   /* 지도 가로 128 ×  */
 }
 
 /* 메뉴 바: 버튼들을 가로로, 가운데 정렬 */

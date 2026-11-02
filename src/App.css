@@ -59,3 +59,39 @@
   padding: 30px;
   border: 1px solid white;
 }
+
+
+
+/* 폰 화면 (600px 이하) */
+@media (max-width: 600px) {
+
+  .earth {
+    top: 60px;
+    right: 30px;
+    width: 68px;
+    height: 68px;
+    animation: spin-small 20s linear infinite;
+  }
+
+  .navbar {
+    padding: 110px 16px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .navbar button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .content-box {
+    margin: 0 16px;
+    padding: 20px;
+    min-height: 500px;
+  }
+}
+
+@keyframes spin-small {
+  from { background-position: 0 0; }
+  to   { background-position: 128px 0; }
+}

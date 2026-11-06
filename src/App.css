@@ -95,3 +95,42 @@
   from { background-position: 0 0; }
   to   { background-position: 128px 0; }
 }
+
+
+/* 다람쥐 구현 시작 */
+
+.squirrel {
+  position: relative;      /* 안쪽 그림들의 기준점 */
+  width: 64px;
+  height: 64px;
+}
+
+/* 다람쥐 그림 둘 다 */
+.squirrel img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+}
+
+/* 눈 감은 그림: 위에 겹쳐두고 평소엔 숨기기 */
+.squirrel .eyes-closed {
+  position: absolute;      /* 기준점(.squirrel) 안에서 */
+  top: 0;                  /* 맨 위, */
+  left: 0;                 /* 맨 왼쪽에 → 눈 뜬 그림이랑 딱 겹침 */
+  opacity: 0;              /* 0 = 투명(안 보임), 1 = 보임 */
+  animation: blink 6s step-end infinite;
+}
+
+/* 깜빡이는 타이밍 (6초 동안) */
+@keyframes blink {
+  0%   { opacity: 0; }   /* 눈 뜸 */
+  30%  { opacity: 1; }   /* 깜빡 (1.8초) */
+  33%  { opacity: 0; }
+  38%  { opacity: 1; }   /* 바로 한 번 더 깜빡 (2.28초) */
+  41%  { opacity: 0; }
+  85%  { opacity: 1; }   /* 한참 있다가 깜빡 (5.1초) */
+  88%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+/* 다람쥐 구현 끝 */

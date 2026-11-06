@@ -25,7 +25,15 @@ function App() {   // 컴포넌트
           ))}
         </nav>
         <div className='content-box'>
-          {menu === 'HOME' && <p>홈페이지 입니다..</p>}
+          {menu === 'HOME' && (
+            <div>
+              <div className="squirrel">
+                <img src="/daram1.png" alt="다람쥐" />
+                <img src="/daram2.png" alt="" className="eyes-closed" />
+              </div>
+              <p>홈페이지 입니다..</p>
+            </div>
+          )}
           {menu === 'ABOUT ME' && <p>나는.. 이런사람입니다..</p>}
           {menu === 'PROJECT' && <p>제가 한 프로젝트..입니다..</p>}
           {menu === 'GALLERY' && <p>제가 그린 기린 그림 입니다..</p>}
